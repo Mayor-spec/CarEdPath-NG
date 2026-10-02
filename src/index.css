@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-headline: 'Playfair Display', Georgia, serif;
+  --font-headline-sm: 'Playfair Display', Georgia, serif;
+  --font-headline-md: 'Playfair Display', Georgia, serif;
+  --font-headline-lg: 'Playfair Display', Georgia, serif;
+  --font-headline-lg-mobile: 'Playfair Display', Georgia, serif;
+  --font-display-mobile: 'Playfair Display', Georgia, serif;
+
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body-sm: 'Plus Jakarta Sans', sans-serif;
+  --font-body-md: 'Plus Jakarta Sans', sans-serif;
+  --font-body-lg: 'Plus Jakarta Sans', sans-serif;
+  --font-label-sm: 'Plus Jakarta Sans', sans-serif;
+  --font-label-md: 'Plus Jakarta Sans', sans-serif;
+  --font-label-lg: 'Plus Jakarta Sans', sans-serif;
+
+  /* Deep Blue Palette */
+  --color-primary: #0a192f;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #152b4d;
+  --color-on-primary-container: #93b5e1;
+  --color-primary-fixed: #dbeafe;
+  --color-primary-fixed-dim: #bfdbfe;
+  --color-on-primary-fixed: #081a36;
+  --color-on-primary-fixed-variant: #1e3a8a;
+
+  /* Touch of Red */
+  --color-secondary: #dc2626;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #ef4444;
+  --color-on-secondary-container: #450a0a;
+  --color-secondary-fixed: #fee2e2;
+  --color-secondary-fixed-dim: #fecaca;
+  --color-on-secondary-fixed: #7f1d1d;
+  --color-on-secondary-fixed-variant: #991b1b;
+
+  --color-tertiary: #1e3a8a;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #2563eb;
+  --color-on-tertiary-container: #dbeafe;
+  --color-tertiary-fixed: #e0e7ff;
+  --color-tertiary-fixed-dim: #c7d2fe;
+  --color-on-tertiary-fixed: #1e1b4b;
+  --color-on-tertiary-fixed-variant: #3730a3;
+
+  --color-surface: #f8fafc;
+  --color-surface-dim: #e2e8f0;
+  --color-surface-bright: #ffffff;
+  --color-surface-variant: #f1f5f9;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f8fafc;
+  --color-surface-container: #f1f5f9;
+  --color-surface-container-high: #e2e8f0;
+  --color-surface-container-highest: #cbd5e1;
+
+  --color-on-surface: #0f172a;
+  --color-on-surface-variant: #334155;
+  --color-inverse-surface: #1e293b;
+  --color-inverse-on-surface: #f8fafc;
+  --color-outline: #64748b;
+  --color-outline-variant: #94a3b8;
+  --color-error: #b91c1c;
+  --color-error-container: #fee2e2;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #7f1d1d;
+}
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #f8fafc;
+    color: #0f172a;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  body {
+    overscroll-behavior: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.font-serif-headline {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Tactile click pop feedback on interactive elements */
+button, [role="button"], a {
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease;
+}
+button:active:not(:disabled), [role="button"]:active, a:active {
+  transform: scale(0.95);
+}
+
+/* Global Click Pop-Up Animation Keyframes */
+@keyframes clickPopRing {
+  0% {
+    transform: scale(0.15);
+    opacity: 0.95;
+  }
+  50% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes clickPopDot {
+  0% {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes clickSpark {
+  0% {
+    transform: rotate(var(--spark-deg)) translate(0px) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(var(--spark-deg)) translate(22px) scale(0);
+    opacity: 0;
+  }
+}
+
+.animate-click-pop-ring {
+  animation: clickPopRing 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-click-pop-dot {
+  animation: clickPopDot 0.38s ease-out forwards;
+}
+
+.animate-click-spark {
+  animation: clickSpark 0.45s ease-out forwards;
+}
+
+/* High-Fidelity Print & PDF Styles */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+  }
+  
+  header, 
+  nav, 
+  footer, 
+  #bottom-nav, 
+  .no-print,
+  button:not(.print-visible) {
+    display: none !important;
+  }
+
+  .shadow-sm, .shadow-md, .shadow-lg, .shadow-2xl {
+    box-shadow: none !important;
+  }
+
+  .border {
+    border-color: #cbd5e1 !important;
+  }
+
+  #career-map-root, #career-map-engine {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 1.2cm;
+  }
+}
+

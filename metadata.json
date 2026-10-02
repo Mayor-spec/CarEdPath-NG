@@ -1,0 +1,11 @@
+{
+  "name": "CarEdPath NG",
+  "description": "An AI career-navigation mentor helping Nigerian secondary-school students make better-informed decisions about their courses, universities, and future careers.",
+  "requestFramePermissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
